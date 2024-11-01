@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from courses.api import api
+
 urlpatterns = [
-    path("", include("courses.urls")),
     path('admin/', admin.site.urls),
+    path('api/', api.urls)
 ]
