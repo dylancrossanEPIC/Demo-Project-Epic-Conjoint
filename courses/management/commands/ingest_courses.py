@@ -25,7 +25,7 @@ class Command(BaseCommand):
             course_pub_date = datetime.strptime(course['course_pub_date'], DATE_FMT)
             course['course_pub_date'] = make_aware(course_pub_date)
 
-        # convert list of dictionaries to list of Track models, and bulk_create
+        # convert list of dictionaries to list of course models, and bulk_create
         courses = [Course(**course) for course in data]
 
         Course.objects.bulk_create(courses)
