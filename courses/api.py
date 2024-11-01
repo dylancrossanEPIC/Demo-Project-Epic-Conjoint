@@ -21,6 +21,13 @@ def createCourse(request, course: CourseSchema):
     course = Course.objects.create(**course.dict())
     return course
 
-# @api.put("/courses/{course_id}", response={200: CourseSchema, 404: NotFoundSchema})
-
-# @api.delete("/courses/{course_id}", response={200: CourseSchema, 404: NotFoundSchema})
+@api.put("/courses/{course_id}", response={200: CourseSchema, 404: NotFoundSchema})
+def course(request, course_id: int, data: CourseSchema):
+    try:
+        course = Course.objects.get(pk=course_id)
+        for attribute, value in data.dict().items():
+            setattr(course, attribute, value)
+        course.save()
+        return 200, course
+    except Course.DoesNotExist as e:
+        return 404, {"message":"Course does not exist"}
