@@ -3,6 +3,32 @@
 {% block title %} Home {% endblock %}
 {% block content %}
 <h1><a href="{% url 'create_course' %}">Template home page</a></h1>
-{% include 'courses.html' %}
+
+<table>
+    <tr>
+        <th>
+            Course
+        </th>
+        <th>
+            Details
+        </th>
+        <th>
+            Publish Date
+        </th>
+    </tr>
+{% for course in courses %}
+    <tr>
+        <td>
+            {{course.course_title}}
+        </td>
+        <td>
+            {{course.course_details}}
+        </td>
+        <td>
+            {{course.course_pub_date}}
+        </td>
+    </tr>
+{% endfor %}
+</table>
 
 {% endblock %}
