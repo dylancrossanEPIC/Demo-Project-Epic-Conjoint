@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %} Home {% endblock %}
-{% block content %}
-<h1><a href="{% url 'create_course' %}">Template home page</a></h1>
 
+
+{% block content %}
+
+{% load static %}
+<head>
+    <title>{% block title %} Home {% endblock %}</title>
+    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css">  
+</head>
+
+
+<h1><a href="{% url 'create_course' %}">Template home page</a></h1>
 <table>
     <tr>
         <th>
