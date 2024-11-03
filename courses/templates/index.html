@@ -7,11 +7,11 @@
 {% load static %}
 <head>
     <title>{% block title %} Home {% endblock %}</title>
-    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css">  
+    <link href="{% static 'index.css' %} rel="stylesheet" type="text/css">  
 </head>
 
 
-<h1><a href="{% url 'create_course' %}">Template home page</a></h1>
+<h1>Available Courses</h1>
 <table>
     <tr>
         <th>
@@ -22,6 +22,11 @@
         </th>
         <th>
             Publish Date
+        </th>
+        <th>
+            <form action="{% url 'create_course' %}">
+                <input type="submit" value="Create Course" />
+            </form>
         </th>
     </tr>
 {% for course in courses %}
