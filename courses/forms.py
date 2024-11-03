@@ -1,5 +1,3 @@
-from courses.models import Course
-from django.forms import ModelForm
 from django import forms
 
 class CreateCourseForm(forms.Form):

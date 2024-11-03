@@ -7,6 +7,7 @@ from .forms import CreateCourseForm
 def index(request):
     response = requests.get('http://127.0.0.1:8000/api/courses')
     courses = response.json()
+    
     return render(request, 'index.html',{'courses':courses})
 
 def create_course(request):
@@ -19,6 +20,8 @@ def create_course(request):
             "course_pub_date" :form.data['course_pub_date']
         }
         print(course)
+        print(json.dumps(course))
+
 
         requests.post('http://127.0.0.1:8000/api/courses', json.dumps(course))
         return redirect("http://127.0.0.1:8000")
@@ -29,4 +32,11 @@ def create_course(request):
     return render(request, 'createcourses.html',{"form":form})
 
 def update_course(request):
-    return render(request, 'updatecourses.html')
+    return render(request, 'updatecourse.html')
+
+def delete_course(request, id):
+    course_id = str(id)
+    requests.delete('http://127.0.0.1:8000/api/courses/'+ course_id)
+    print(course_id)
+    return redirect("http://127.0.0.1:8000")
+

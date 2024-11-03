@@ -7,13 +7,16 @@
 {% load static %}
 <head>
     <title>{% block title %} Home {% endblock %}</title>
-    <link href="{% static 'index.css' %} rel="stylesheet" type="text/css">  
+    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css">  
 </head>
 
 
 <h1>Available Courses</h1>
 <table>
     <tr>
+        <th>
+            ID
+        </th>
         <th>
             Course
         </th>
@@ -32,14 +35,23 @@
 {% for course in courses %}
     <tr>
         <td>
+            {{course.id}}
+        </td>
+        <td>
             {{course.course_title}}
         </td>
         <td>
             {{course.course_details}}
         </td>
         <td>
-            {{course.course_pub_date}}
+            {{course.course_pub_date}}                                
         </td>
+        <td>
+            <form action="{% url 'delete_course' course.id %}">
+                <input type="submit" value="Delete " />
+            </form>
+        </td>
+      
     </tr>
 {% endfor %}
 </table>

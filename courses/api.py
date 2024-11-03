@@ -1,7 +1,7 @@
 from typing import List
 from ninja import NinjaAPI
 from courses.models import Course
-from courses.schema import CourseSchema, NotFoundSchema
+from courses.schema import CourseSchema, NotFoundSchema, CreateCourseSchema
 
 api = NinjaAPI()
 @api.get("/courses", response=List[CourseSchema])
@@ -16,8 +16,8 @@ def course(request, course_id: int):
     except Course.DoesNotExist as e:
         return 404, {"message":"Course does not exist"}
 
-@api.post("/courses", response={201: CourseSchema})
-def create_course(request, course: CourseSchema):
+@api.post("/courses", response={201: CreateCourseSchema})
+def create_course(request, course: CreateCourseSchema):
     course = Course.objects.create(**course.dict())
     return course
 
