@@ -12,16 +12,11 @@ def index(request):
 def create_course(request):
     if request.method == "POST":
         form = CreateCourseForm(request.POST)
-        # print(json.dumps(form.data))
         course = {
             "course_title" :form.data['course_title'],
             "course_details" :form.data['course_details'],
             "course_pub_date" :form.data['course_pub_date']
         }
-        print(course)
-        print(json.dumps(course))
-
-
         requests.post('http://127.0.0.1:8000/api/courses', json.dumps(course))
         return redirect("http://127.0.0.1:8000")
         
@@ -34,7 +29,6 @@ def update_course(request, id):
     course_id = str(id)
     if request.method == "POST":
         form = UpdateCourseForm(request.POST)
-        print(json.dumps(form.data))
         course = {
             "id":course_id,
             "course_title" :form.data['course_title'],
@@ -54,6 +48,5 @@ def update_course(request, id):
 def delete_course(request, id):
     course_id = str(id)
     requests.delete('http://127.0.0.1:8000/api/courses/'+ course_id)
-    print(course_id)
     return redirect("http://127.0.0.1:8000")
 

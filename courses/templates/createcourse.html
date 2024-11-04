@@ -2,14 +2,14 @@
 
 {% block title %} Create Course {% endblock %}
 {% block content %}
-<form class="validate-form" method="POST" >
+<form class="validate-form" method="POST">
     {% csrf_token %}
 
-<h1>Create Courses</h1>
-{{form}}
+    <h1>Create Courses</h1>
+    {{form}}
 
-<input type="submit" value="Create Course">
-</input>
+    <input type="submit" value="Create Course">
+    </input>
 
 </form>
 {% endblock %}

@@ -5,9 +5,10 @@
 {% block content %}
 
 {% load static %}
+
 <head>
     <title>{% block title %} Home {% endblock %}</title>
-    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css">  
+    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css">
 </head>
 
 
@@ -32,7 +33,7 @@
             </form>
         </th>
     </tr>
-{% for course in courses %}
+    {% for course in courses %}
     <tr>
         <td>
             {{course.id}}
@@ -44,7 +45,7 @@
             {{course.course_details}}
         </td>
         <td>
-            {{course.course_pub_date}}                                
+            {{course.course_pub_date}}
         </td>
         <td>
             <form action="{% url 'delete_course' course.id %}">
@@ -56,9 +57,9 @@
                 <input type="submit" value="Update" />
             </form>
         </td>
-      
+
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
 
 {% endblock %}
