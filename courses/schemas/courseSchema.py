@@ -1,6 +1,7 @@
 from datetime import date
 from ninja import Schema
 
+
 class CourseSchema(Schema):
     id: int
     course_title: str

@@ -1,4 +1,3 @@
-import datetime
 from django.db import models
 
 
@@ -8,7 +7,6 @@ class Course(models.Model):
     course_pub_date = models.DateField()
     def __str__(self):
         return self.course_title
-    
 
     def getAllCourses():
         return Course.objects.all()

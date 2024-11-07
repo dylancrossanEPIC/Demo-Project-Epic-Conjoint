@@ -1,6 +1,6 @@
 from ninja import Router
-from courses.models import Course
-from courses.schema import CourseSchema, NotFoundSchema, CreateCourseSchema
+from courses.models.courseModel import Course
+from courses.schemas.courseSchema import CourseSchema, NotFoundSchema, CreateCourseSchema
 from typing import List
 
 course_router = Router()

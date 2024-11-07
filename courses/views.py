@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 import requests
 import json
-from .forms import CreateCourseForm, UpdateCourseForm
+from .forms.courseForms import CreateCourseForm, UpdateCourseForm
 
 
 def index(request):

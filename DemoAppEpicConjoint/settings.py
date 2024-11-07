@@ -26,6 +26,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+NINJA_JWT = {
+    'TOKEN_OBTAIN_PAIR_INPUT_SCHEMA': 'courses.schemas.authSchema.MyTokenObtainPairInputSchema',
+}
 
 # Application definition
 
@@ -36,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'ninja_jwt',
+
 
 ]
 
