@@ -4,6 +4,7 @@ import requests
 import json
 from .forms import CreateCourseForm, UpdateCourseForm
 
+
 def index(request):
     response = requests.get('http://127.0.0.1:8000/api/courses')
     courses = response.json()
@@ -19,8 +20,6 @@ def create_course(request):
         }
         requests.post('http://127.0.0.1:8000/api/courses', json.dumps(course))
         return redirect("http://127.0.0.1:8000")
-        
-
     else:
         form = CreateCourseForm()
     return render(request, 'createcourse.html',{"form":form})
