@@ -1,18 +1,17 @@
 from datetime import date
-from ninja import Schema
+from pydantic import BaseModel
 
-
-class CourseSchema(Schema):
+class CourseSchema(BaseModel):
     id: int
     course_title: str
     course_details: str
     course_pub_date: date
+ 
     
-class CreateCourseSchema(Schema):
+class CreateCourseSchema(BaseModel):
     course_title: str
     course_details: str
     course_pub_date: date
 
-class NotFoundSchema(Schema):
+class NotFoundSchema(BaseModel):
     message: str
-    

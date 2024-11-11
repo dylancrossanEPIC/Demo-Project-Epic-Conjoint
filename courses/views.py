@@ -3,12 +3,20 @@ from django.http import HttpRequest
 import requests
 import json
 from .forms.courseForms import CreateCourseForm, UpdateCourseForm
+from django.views import View
 
 
-def index(request):
-    response = requests.get('http://127.0.0.1:8000/api/courses')
-    courses = response.json()
-    return render(request, 'index.html',{'courses':courses})
+
+
+class IndexView(View):
+    def get(self, request):
+        response = requests.get('http://127.0.0.1:8000/api/courses')
+        courses = response.json()
+        return render(request, 'index.html', {'courses': courses})
+# def index(request):
+#     response = requests.get('http://127.0.0.1:8000/api/courses')
+#     courses = response.json()
+#     return render(request, 'index.html',{'courses':courses})
 
 def create_course(request):
     if request.method == "POST":
@@ -48,4 +56,5 @@ def delete_course(request, id):
     course_id = str(id)
     requests.delete('http://127.0.0.1:8000/api/courses/'+ course_id)
     return redirect("http://127.0.0.1:8000")
+
 
