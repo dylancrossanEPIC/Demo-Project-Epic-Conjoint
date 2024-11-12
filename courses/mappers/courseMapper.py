@@ -11,7 +11,7 @@ class CourseMapper:
     
     def getCourseByID(course_id):
         try:
-            course = Course.objects.get(pk=course_id)           
+            course = Course.objects.get(pk=course_id) 
             pydantic_course = CourseSchema(
             id=course_id,
             course_title=course.course_title,

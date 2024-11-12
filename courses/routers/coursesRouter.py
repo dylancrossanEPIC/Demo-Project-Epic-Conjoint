@@ -6,7 +6,6 @@ from typing import List
 
 course_router = Router()
     
-
 class CourseAPI:
 
     @course_router.get("", response=List[CourseSchema])
